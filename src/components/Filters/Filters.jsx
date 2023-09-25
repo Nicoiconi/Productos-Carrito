@@ -52,7 +52,7 @@ export default function Filters({ setFilters }) {
           id={categoryFilterId}
           onChange={handleChangeCategory}
         >
-          <option name="" id="">All</option>
+          <option name="all" value="all" id="">All</option>
           <option name="laptops" value="laptops" id="">Laptops</option>
           <option name="smartphones" value="smartphones" id="">Smart Phones</option>
         </select>
