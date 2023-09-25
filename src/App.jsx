@@ -13,19 +13,19 @@ function App() {
 
   const [products] = useState(inititalProducts);
 
-  const { filters, filterProducts, setFilters } = useFilters();
+  const { filterProducts } = useFilters();
 
   const filteredProducts = filterProducts(products);
 
   return (
     <>
 
-      <Header setFilters={setFilters} />
+      <Header />
 
       <Products products={filteredProducts} />
 
       {
-        IS_DEVELOPMENT && <Footer filters={filters} />
+        IS_DEVELOPMENT && <Footer />
       }
 
     </>

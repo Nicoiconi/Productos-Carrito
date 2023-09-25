@@ -2,7 +2,12 @@ import { useState, useId } from "react";
 
 import "./Filters.css";
 
-export default function Filters({ setFilters }) {
+import { useFilters } from "../../hooks/useFilters";
+
+export default function Filters() {
+
+  const { setFilters } = useFilters();
+
 
   const [minPrice, setMinPrice] = useState();
 
