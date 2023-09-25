@@ -11,7 +11,7 @@ import Cart from "./components/Cart/Cart";
 import CartProvider from "./context/CartContext";
 
 
-function App() {
+export default function App() {
 
   const [products] = useState(inititalProducts);
 
@@ -25,13 +25,10 @@ function App() {
       <Header />
       <Cart />
       <Products products={filteredProducts} />
-
       {
         IS_DEVELOPMENT && <Footer />
       }
 
     </CartProvider>
-  )
-}
-
-export default App
+  );
+};

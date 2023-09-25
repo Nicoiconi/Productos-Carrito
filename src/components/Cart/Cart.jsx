@@ -11,7 +11,7 @@ export default function Cart() {
 
   const cartCheckBoxId = useId();
 
-  const { cart, addToCart, clearCart } = useCart();
+  const { cart, addToCart, discountFromCart, clearCart } = useCart();
 
   return (
     <>
@@ -43,11 +43,11 @@ export default function Cart() {
         <ul>
           {
             cart?.map(item => {
-              console.log(item);
               return (
                 <CartItem
                   key={item.id}
                   addToCart={addToCart}
+                  discountFromCart={discountFromCart}
                   product={item}
                 />
               )

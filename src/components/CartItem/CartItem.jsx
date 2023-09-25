@@ -1,8 +1,4 @@
-import { useCart } from "../../hooks/useCart";
-
-
-export default function CartItem({ addToCart, product }) {
-  // console.log(addToCart, product);
+export default function CartItem({ addToCart, discountFromCart, product }) {
 
   return (
     <li>
@@ -19,7 +15,9 @@ export default function CartItem({ addToCart, product }) {
       </div>
 
       <footer>
-        <button>
+        <button
+          onClick={() => discountFromCart(product)}
+        >
           -
         </button>
         <small>
@@ -31,6 +29,7 @@ export default function CartItem({ addToCart, product }) {
           +
         </button>
       </footer>
+      
     </li>
 
   )

@@ -1,12 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { FilterContext } from "../context/FilterContext";
 
 
 export function useFilters() {
 
-
   const { filters, setFilters } = useContext(FilterContext);
-
 
   function filterProducts(products) {
     return products.filter(p => {
@@ -18,5 +16,5 @@ export function useFilters() {
     });
   };
 
-  return { filters, filterProducts, setFilters }
+  return { filters, filterProducts, setFilters };
 };

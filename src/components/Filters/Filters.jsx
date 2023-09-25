@@ -1,12 +1,14 @@
-import { useState, useId } from "react";
+import { useId } from "react";
 
 import "./Filters.css";
 
 import { useFilters } from "../../hooks/useFilters";
+import { useCategories } from "../../hooks/useCategories";
 
 export default function Filters() {
 
   const { filters, setFilters } = useFilters();
+  const { uniqueCategories } = useCategories();
 
   const minPriceFilterId = useId();
   const categoryFilterId = useId();
@@ -20,7 +22,7 @@ export default function Filters() {
   };
 
   function handleChangeCategory(e) {
-    const {value} = e.target;
+    const { value } = e.target;
     setFilters(prevState => ({
       ...prevState,
       category: value
@@ -55,8 +57,19 @@ export default function Filters() {
           onChange={handleChangeCategory}
         >
           <option name="all" value="all" id="">All</option>
-          <option name="laptops" value="laptops" id="">Laptops</option>
-          <option name="smartphones" value="smartphones" id="">Smart Phones</option>
+          {
+            uniqueCategories?.map(c => {
+              const categoryIndex = uniqueCategories.indexOf(c);
+              return (
+                <option
+                  key={`${categoryIndex} - ${c}`}
+                  value={c}
+                >
+                  {c}
+                </option>
+              )
+            })
+          }
         </select>
       </div>
 
