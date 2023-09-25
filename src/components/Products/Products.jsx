@@ -5,11 +5,14 @@ import { useCart } from "../../hooks/useCart";
 
 
 export default function Products({ products }) {
+  // console.log(products);
 
   const { addToCart, cart, removeFromCart } = useCart();
+  // console.log(cart);
 
   function checkProductInCart(product) {
-    return cart.some(item => item.product.id === product.id);
+    // console.log(product);
+    return cart.some(item => item.id === product.id);
   };
 
   return (

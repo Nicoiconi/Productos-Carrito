@@ -3,11 +3,15 @@ import { useId } from "react";
 import "./Cart.css";
 
 import { CartIcon, ClearCartIcon } from "../Icons/Icons";
+import { useCart } from "../../hooks/useCart";
+import CartItem from "../CartItem/CartItem";
 
 
 export default function Cart() {
 
   const cartCheckBoxId = useId();
+
+  const { cart, addToCart, clearCart } = useCart();
 
   return (
     <>
@@ -26,33 +30,31 @@ export default function Cart() {
       <aside
         className="cart"
       >
-        <ul>
-          <li>
-
-            <img
-              src=""
-              alt=""
-            />
-
-            <div>
-              <strong>name</strong> - $ price
-            </div>
-          </li>
-
-          <footer>
-            <small>
-              Qty: 1
-            </small>
-            <button>
-              +
+        {
+          cart?.length > 0
+            ? <button
+              onClick={clearCart}
+            >
+              <ClearCartIcon />
             </button>
-          </footer>
+            : "There are no products"
+        }
+
+        <ul>
+          {
+            cart?.map(item => {
+              console.log(item);
+              return (
+                <CartItem
+                  key={item.id}
+                  addToCart={addToCart}
+                  product={item}
+                />
+              )
+            })
+          }
 
         </ul>
-
-        <button>
-          <ClearCartIcon />
-        </button>
       </aside>
     </>
   );
